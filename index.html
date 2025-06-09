@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>REST Countries API</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Questrial&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" 
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" 
+        crossorigin="anonymous"
+    >
+</head>
+<body>
+    <header class="header-section">
+        <h1>Where in the world?</h1>
+        <div>
+            <i class="bi bi-moon"></i>
+            <button id="dark-mode-toggle">Dark Mode</button>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="search-cont">
+            <input type="text" id="search" placeholder="Search for a country..." />
+        </div>
+        <select id="filter-region">
+            <option value="">Filter by Region</option>
+            <option value="Africa">Africa</option>
+            <option value="Americas">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+        </select>
+    </section>
+
+    <section id="countries-container"></section>
+
+    <script src="script.js"></script>
+</body>
+</html>

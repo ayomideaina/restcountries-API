@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Nunito Sans", sans-serif;
+    font-style: normal;
+    background-color: rgb(252, 252, 252);
+    transition: rgb(252, 252, 252) 0.3s ease, color 0.3s ease
+}
+.header-section{
+    display:flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+#dark-mode-toggle{
+    background-color: #fff;
+    border: none;
+}
+.container{
+    margin-inline: 30px;
+    display: flex;
+    justify-content: space-between;
+}
