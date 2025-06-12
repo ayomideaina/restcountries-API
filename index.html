@@ -8,38 +8,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link 
-        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Questrial&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" 
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" 
         rel="stylesheet"
     >
     <link rel="stylesheet" 
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" 
-        crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     >
 </head>
-<body>
+<body class="dark-mode">
     <header class="header-section">
         <h1>Where in the world?</h1>
-        <div>
-            <i class="bi bi-moon"></i>
+        <div class="dark-mode-container" id="dark-mode-container">
+            <i class="bi bi-moon-fill" id="mode-icon"></i>
             <button id="dark-mode-toggle">Dark Mode</button>
         </div>
     </header>
 
     <section class="container">
         <div class="search-cont">
-            <input type="text" id="search" placeholder="Search for a country..." />
+            <i class="bi bi-search"></i>
+            <input type="text" id="searchInput" placeholder="Search for a country..."/>
         </div>
         <select id="filter-region">
             <option value="">Filter by Region</option>
             <option value="Africa">Africa</option>
-            <option value="Americas">America</option>
+            <option value="America">America</option>
             <option value="Asia">Asia</option>
             <option value="Europe">Europe</option>
             <option value="Oceania">Oceania</option>
         </select>
     </section>
 
-    <section id="countries-container"></section>
+    <section class="countries-container" id="countries-container">
+        <div class="loading">Loading countries...</div>
+    </section>
 
     <script src="script.js"></script>
 </body>
