@@ -233,7 +233,9 @@ input:focus {
   color: hsl(0, 0%, 52%);
 }
 
-/* Mobile Responsiveness
+
+/* Mobile Responsiveness */
+
 @media (max-width: 768px) {
   .header-section {
     padding: 20px 20px;
@@ -277,6 +279,10 @@ input:focus {
     padding: 20px 0;
   }
 
+  .country-card{
+    width:92%;
+    margin: auto;
+  }
   .countries-container {
     padding: 0 15px 30px;
     gap: 30px;
@@ -285,20 +291,14 @@ input:focus {
   #filter-region {
     width: 100%;
   }
-} */
+}
 
 
-/* 
-@media (min-width: 769px) and (max-width: 1024px) {
+
+@media (max-width: 1024px) {
   .countries-container {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 50px;
   }
 }
 
-@media (min-width: 1025px) {
-  .countries-container {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 60px;
-  }
-} */
