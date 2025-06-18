@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>REST Countries API</title>
-    <link rel="stylesheet" href="./assests/css/index.css">
+    <title>Country Details</title>
+    <link rel="stylesheet" href="../assests/css/index.css" />
+    <link rel="stylesheet" href="../assests/css/detail.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link 
@@ -25,25 +26,18 @@
     </header>
 
     <main>
-        <section class="container">
-            <div class="search-cont">
-                <i class="bi bi-search"></i>
-                <input type="text" id="searchInput" placeholder="Search for a country..."/>
+        <div class="detail-container">
+            <button class="back-button" id="back-button">
+                <a class="back" href="index.html"></a><i class="bi bi-arrow-left"></i> Back
+            </button>
+            
+            <div id="detail-content-container">
+                <div class="loading">Loading country details...</div>
             </div>
-            <select id="filter-region">
-                <option value="">Filter by Region</option>
-                <option value="Africa">Africa</option>
-                <option value="America">America</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europe</option>
-                <option value="Oceania">Oceania</option>
-            </select>
-        </section>
-
-        <section class="countries-container" id="countries-container">
-            <div class="loading">Loading countries...</div>
-        </section>
+        </div>
     </main>
-    <script src="./assests/js/script.js"></script>
+    </main>
+    
+    <script src="../assests/js/detail.js"></script>
 </body>
 </html>

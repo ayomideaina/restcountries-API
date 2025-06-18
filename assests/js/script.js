@@ -1,11 +1,10 @@
-// REST Countries API v3.1 endpoint
 const API_URL = "https://restcountries.com/v3.1/all?fields=name,population,region,capital,flags,cca3"
 
-// Global variables
+
 let allCountries = []
 let filteredCountries = []
 
-// DOM Elements
+
 const countriesContainer = document.getElementById("countries-container")
 const searchInput = document.getElementById("searchInput")
 const filterRegion = document.getElementById("filter-region")
@@ -15,15 +14,23 @@ const modeIcon = document.getElementById("mode-icon")
 const body = document.body
 
 
+function initializeDarkMode() {
+  const savedMode = localStorage.getItem("darkMode")
+  if (savedMode === "light") {
+    body.classList.add("light-mode")
+    updateDarkModeUI()
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initializeDarkMode()
   fetchCountries()
   setupEventListeners()
 })
 
-// function to fetch countries from the REST Countries API
+
 async function fetchCountries() {
   try {
-
     showLoading()
 
     const response = await fetch(API_URL)
@@ -38,7 +45,7 @@ async function fetchCountries() {
       throw new Error("Invalid data format received from API")
     }
 
-    // used to store the countries data
+  
     allCountries = data
     filteredCountries = [...data]
 
@@ -69,9 +76,7 @@ function formatPopulation(population) {
   return population.toLocaleString()
 }
 
-
 function displayCountries(countries) {
-  // creating country array
   if (!Array.isArray(countries)) {
     countries = []
   }
@@ -90,7 +95,7 @@ function displayCountries(countries) {
       const flag = getFlag(country)
 
       return `
-      <div class="country-card" data-country="${name}">
+      <div class="country-card" data-country="${name}" style="cursor: pointer;">
         <img src="${flag}" alt="Flag of ${name}" onerror="this.src='https://via.placeholder.com/250x160?text=No+Flag'">
         <div class="card-content">
           <h3 class="country-name">${name}</h3>
@@ -106,9 +111,37 @@ function displayCountries(countries) {
     .join("")
 
   countriesContainer.innerHTML = countriesHTML
+
+  addCountryCardListeners()
 }
 
-// Filter countries based on search term and selected region
+function addCountryCardListeners() {
+  const countryCards = document.querySelectorAll(".country-card")
+  console.log("Adding listeners to", countryCards.length, "country cards") 
+
+  countryCards.forEach((card, index) => {
+    card.addEventListener("click", () => {
+      const countryName = card.dataset.country
+      console.log(`Card ${index + 1} clicked:`, countryName) 
+      navigateToDetail(countryName)
+    })
+
+  
+    card.addEventListener("mouseenter", () => {
+      card.style.transform = "translateY(-5px)"
+    })
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "translateY(0)"
+    })
+  })
+}
+
+function navigateToDetail(countryName) {
+  console.log("Navigating to:", countryName)
+  window.location.href = `detail.html?country=${encodeURIComponent(countryName)}`
+}
+
 function filterCountries() {
   if (!Array.isArray(allCountries)) {
     filteredCountries = []
@@ -120,7 +153,6 @@ function filterCountries() {
   const selectedRegion = filterRegion.value
 
   filteredCountries = allCountries.filter((country) => {
-
     const name = getCountryName(country).toLowerCase()
     const matchesSearch = !searchTerm || name.includes(searchTerm)
 
@@ -133,22 +165,25 @@ function filterCountries() {
   displayCountries(filteredCountries)
 }
 
-//event listeners function
 function setupEventListeners() {
-
   searchInput.addEventListener("input", filterCountries)
-
   filterRegion.addEventListener("change", filterCountries)
-
   darkModeToggle.addEventListener("click", toggleDarkMode)
   darkModeContainer.addEventListener("click", toggleDarkMode)
 }
 
-// function to toggle between dark and light mode
 function toggleDarkMode() {
   body.classList.toggle("light-mode")
+  updateDarkModeUI()
 
-  if (body.classList.contains("light-mode")) {
+  const isLightMode = body.classList.contains("light-mode")
+  localStorage.setItem("darkMode", isLightMode ? "light" : "dark")
+}
+
+function updateDarkModeUI() {
+  const isLightMode = body.classList.contains("light-mode")
+
+  if (isLightMode) {
     darkModeToggle.textContent = "Dark Mode"
     modeIcon.className = "bi bi-moon"
   } else {
